@@ -1,8 +1,8 @@
 {
     "name": "imanni_whatsapp_backend",
-    "version":"1.0.0", 
+    "version": "1.0.0",
     "description": "Whatsapp appointment booking backend (Twilio)",
-    "main":"server.js",
+    "main": "server.js",
     "scripts": {
         "start": "node server.js"
     },
@@ -15,8 +15,4 @@
         "twilio": "^4.23.0",
         "node-fetch": "^3.3.2"
     }
-
-
-
-
 }
