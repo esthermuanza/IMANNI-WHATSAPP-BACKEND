@@ -62,7 +62,7 @@ app.post("/whatsapp/webhook", async (req, res) => {
 
   if (text === "annuler") {
     resetSession(phone);
-    twiml.message("Votre demande a été annulée. Si vous souhaitez effectuer une nouvelle réservation, il vous suffit de m'écrire à nouveau.    Je reste à votre disposition");
+    twiml.message("Votre demande a été annulée. Si vous souhaitez effectuer une nouvelle réservation, il vous suffit de m'écrire à nouveau.  Je reste à votre disposition");
     return res.type("text/xml").send(twiml.toString());
   }
   
@@ -71,7 +71,7 @@ app.post("/whatsapp/webhook", async (req, res) => {
     // STEP 0 __ GREETING
     case 0:
         twiml.message(
-            "Bonjour et bienvenue chez IMANNI. Je suis votre assistante de prise de rendez-vous. Je vais vous accompager en quelques instants.n\n"+
+            "Bonjour et bienvenue chez IMANNI. Je suis votre assistante de prise de rendez-vous. Je vais vous accompager en quelques instants.\n"+
             "Quel service souhaitez-vous ?\n" + 
             "1.Restaurant\n2.Hotel\n3.Spa\n\n" +
             "Merci de répondre par le numéro correspondant."
@@ -92,7 +92,7 @@ app.post("/whatsapp/webhook", async (req, res) => {
             twiml.message(
                 `Parfait pour le service *${session.service}*.\n` +
                 "Quelle date et heure souhaitez-vous ?\n" +
-                "Exemple : 14 fevrier à  14h"
+                "Exemple : 14 février à  14h"
             );
             session.step = 2;
             break;
@@ -100,7 +100,7 @@ app.post("/whatsapp/webhook", async (req, res) => {
             // STEP 2 --DATE
             case 2:
                 session.date_time = body;
-                twiml.message("Puis-je avoir votre nom complet, s'il vous plait* ?");
+                twiml.message("Puis-je avoir votre nom complet, s'il vous plait ?");
                 session.step = 3;
                 break;
             
@@ -122,8 +122,8 @@ app.post("/whatsapp/webhook", async (req, res) => {
                     `Service : ${appointment.service}\n` +      
                     `Date : ${appointment.date_time}\n` +
                     `Nom : ${appointment.name}\n\n` +
-                    "Votre rendez-vous est confirmé." +
-                    "Nous avons hate de vous acceuillir chez IMANNI" +
+                    "Votre rendez-vous est confirmé. " +
+                    "Nous avons hate de vous acceuillir chez IMANNI " +
                     "A très bientot !!!"
                 );
                 resetSession(phone);
